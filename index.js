@@ -44,6 +44,10 @@ class BoardComponent {
             
             tileDiv.appendChild(document.createTextNode(tile.index));
 
+            tileDiv.addEventListener('click', () => {
+                console.log(`Tile ${tile.index} clicked!`);
+            });
+
             boardDiv.appendChild(tileDiv);
         }
 
