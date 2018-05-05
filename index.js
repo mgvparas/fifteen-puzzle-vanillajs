@@ -20,9 +20,14 @@ class Board {
 
     swapWithEmpty(tile) {
         const adjacentTiles = this._getAdjacentTiles(tile);
-        const emptyTile = this.tiles.find(x => x.number === 15);
+        const adjacentEmptyTile = adjacentTiles.find(x => x.number === 15);
+        
+        if (!adjacentEmptyTile) { 
+            console.log("Adjacent empty tile not found. Can't swap.")
+            return;
+        }
 
-        emptyTile.number = tile.number;
+        adjacentEmptyTile.number = tile.number;
         tile.number = 15;
         
         console.log(this.tiles);
@@ -33,9 +38,9 @@ class Board {
         
         adjacentTiles = this.tiles.filter(x => {
             if ((x.rowIndex === tile.rowIndex - 1 && x.columnIndex === tile.columnIndex) || //top adjacent tile
-                (x.rowIndex === tile.rowIndex + 1 && x.columnIndex === tile.columnIndex) || //bottom adjacent tile
                 (x.columnIndex === tile.columnIndex - 1 && x.rowIndex === tile.rowIndex) || //left adjacent tile
-                (x.columnIndex === tile.columnIndex + 1 && x.rowIndex === tile.rowIndex)) { //right adjacent tile
+                (x.columnIndex === tile.columnIndex + 1 && x.rowIndex === tile.rowIndex) || //right adjacent tile
+                (x.rowIndex === tile.rowIndex + 1 && x.columnIndex === tile.columnIndex)) { //bottom adjacent tile
                 if (x) { //only return tiles on sides which are within the puzzle
                     console.log(x);
                     return x;
