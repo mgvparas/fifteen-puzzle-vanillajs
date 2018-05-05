@@ -8,13 +8,14 @@ class Tile {
 
 class Board {
     constructor(rowCount = 4, columnCount = 4) {
+        this.tileCount = rowCount * columnCount;
         this.isSolved = true;
         this.tiles = this._createTiles(rowCount, columnCount);
     }
 
     swapWithEmpty(tile) {
         const adjacentTiles = this._getAdjacentTiles(tile);
-        const adjacentEmptyTile = adjacentTiles.find(x => x.number === 15);
+        const adjacentEmptyTile = adjacentTiles.find(x => x.number === this.tileCount);
         
         if (!adjacentEmptyTile) { 
             console.log("Adjacent empty tile not found. Can't swap.")
@@ -22,7 +23,7 @@ class Board {
         }
 
         adjacentEmptyTile.number = tile.number;
-        tile.number = 15;
+        tile.number = this.tileCount;
 
         console.log(this.tiles);
         
@@ -30,13 +31,17 @@ class Board {
         console.log(`Puzzle is solved = ${this.isSolved}`);
     }
 
+    shuffle() {
+        this._checkIfSolved();
+    }
+
     _createTiles(rowCount, columnCount) {
-        let tileIndex = 0;
+        let tileNumber = 1;
         let tiles = [];
 
         for(let x = 0; x < rowCount; x++) {
             for(let y = 0; y < columnCount; y++) {
-                tiles.push(new Tile(x, y, tileIndex++));
+                tiles.push(new Tile(x, y, tileNumber++));
             }
         }
         
@@ -65,8 +70,8 @@ class Board {
      * Iterate through tiles and check if numbers are in order
      */
     _checkIfSolved() {
-        let number = 0;
-        for (let x = 0; x < 16; x++) {
+        let number = 1;
+        for (let x = 0; x < this.tileCount; x++) {
             if (this.tiles[x].number !== number) {
                 this.isSolved = false;
                 return;
@@ -96,7 +101,7 @@ class BoardComponent {
             tileDiv.style.top = (tile.rowIndex * 55) + "px";
             // tileDiv.style.transition = "0.15s top ease-in-out, 0.15s left ease-in-out";
             
-            if (tile.number === 15) {
+            if (tile.number === this.board.tileCount) {
                 tileDiv.style.backgroundColor = "white";
             } else {
                 tileDiv.style.backgroundColor = "blue";
@@ -123,6 +128,8 @@ class BoardComponent {
     }
 }
 
-const board = new BoardComponent(new Board());
+const board = new Board();
+board.shuffle();
+const boardComponent = new BoardComponent(board);
 const main = document.getElementsByClassName("main")[0];
-board.render(main);
+boardComponent.render(main);
