@@ -37,14 +37,18 @@ class Board {
         console.log(`Puzzle is solved = ${this.isSolved}`);
     }
 
+    /**
+     * Get empty tile, then swap with any of the adjacent tiles, then repeat for x number of times
+     */
     shuffle() {
-        const emptyTile = this.tiles.find(x => x.number === this.tileCount);
-        const adjacentTiles = this._getAdjacentTiles(emptyTile);
-        const randomAdjacentTile = adjacentTiles[randomize(0, adjacentTiles.length-1)];
-        
-        this.swapWithEmpty(randomAdjacentTile);
-
-        this._checkIfSolved();
+        for(let x = 0; x < this.tileCount * 2; x++) {
+            const emptyTile = this.tiles.find(x => x.number === this.tileCount);
+            const adjacentTiles = this._getAdjacentTiles(emptyTile);
+            const randomAdjacentTile = adjacentTiles[randomize(0, adjacentTiles.length-1)];
+    
+            this.swapWithEmpty(randomAdjacentTile);
+            console.log(`shuffle step ${x + 1}`);
+        }
     }
 
     _createTiles(rowCount, columnCount) {
