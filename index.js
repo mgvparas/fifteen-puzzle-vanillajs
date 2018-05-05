@@ -8,14 +8,8 @@ class Tile {
 
 class Board {
     constructor(rowCount = 4, columnCount = 4) {
-        this.tiles = [];
-
-        let tileIndex = 0;
-        for(let x = 0; x < rowCount; x++) {
-            for(let y = 0; y < columnCount; y++) {
-                this.tiles.push(new Tile(x, y, tileIndex++));
-            }
-        }
+        this.isSolved = true;
+        this.tiles = this._createTiles(rowCount, columnCount);
     }
 
     swapWithEmpty(tile) {
@@ -29,8 +23,24 @@ class Board {
 
         adjacentEmptyTile.number = tile.number;
         tile.number = 15;
-        
+
         console.log(this.tiles);
+        
+        this._checkIfSolved();
+        console.log(`Puzzle is solved = ${this.isSolved}`);
+    }
+
+    _createTiles(rowCount, columnCount) {
+        let tileIndex = 0;
+        let tiles = [];
+
+        for(let x = 0; x < rowCount; x++) {
+            for(let y = 0; y < columnCount; y++) {
+                tiles.push(new Tile(x, y, tileIndex++));
+            }
+        }
+        
+        return tiles;
     }
 
     _getAdjacentTiles(tile) {
@@ -49,6 +59,22 @@ class Board {
         });
 
         return adjacentTiles;
+    }
+
+    /**
+     * Iterate through tiles and check if numbers are in order
+     */
+    _checkIfSolved() {
+        let number = 0;
+        for (let x = 0; x < 16; x++) {
+            if (this.tiles[x].number !== number) {
+                this.isSolved = false;
+                return;
+            }
+            number++;
+        }
+
+        this.isSolved = true;
     }
 }
 
@@ -80,10 +106,14 @@ class BoardComponent {
             tileDiv.addEventListener('click', () => {
                 console.log(`Tile ${tile.number} clicked!`);
 
-                this.board.swapWithEmpty(tile);
+                this.board.swapWithEmpty(tile)
 
                 parentNode.innerHTML = "";
                 this.render(parentNode);
+
+                if (this.board.isSolved) {
+                    alert('Puzzle Solved! :)');
+                }
             });
 
             boardDiv.appendChild(tileDiv);
