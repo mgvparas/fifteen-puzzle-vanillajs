@@ -30,8 +30,18 @@ class Board {
 
     _getAdjacentTiles(tile) {
         let adjacentTiles = [];
-        if (tile.y )this.tiles.find(x => x.x === tile.x);
-
+        
+        adjacentTiles = this.tiles.filter(x => {
+            if ((x.rowIndex === tile.rowIndex - 1 && x.columnIndex === tile.columnIndex) || //top adjacent tile
+                (x.rowIndex === tile.rowIndex + 1 && x.columnIndex === tile.columnIndex) || //bottom adjacent tile
+                (x.columnIndex === tile.columnIndex - 1 && x.rowIndex === tile.rowIndex) || //left adjacent tile
+                (x.columnIndex === tile.columnIndex + 1 && x.rowIndex === tile.rowIndex)) { //right adjacent tile
+                if (x) { //only return tiles on sides which are within the puzzle
+                    console.log(x);
+                    return x;
+                }
+            }
+        });
 
         return adjacentTiles;
     }
