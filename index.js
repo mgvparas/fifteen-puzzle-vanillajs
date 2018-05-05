@@ -1,3 +1,9 @@
+//Math Functions
+function randomize(from, to) {
+    return Math.floor(Math.random() * (to - from + 1)) + from;
+}
+
+//Models
 class Tile {
     constructor(rowIndex, columnIndex, number) {
         this.rowIndex = rowIndex;
@@ -32,6 +38,12 @@ class Board {
     }
 
     shuffle() {
+        const emptyTile = this.tiles.find(x => x.number === this.tileCount);
+        const adjacentTiles = this._getAdjacentTiles(emptyTile);
+        const randomAdjacentTile = adjacentTiles[randomize(0, adjacentTiles.length-1)];
+        
+        this.swapWithEmpty(randomAdjacentTile);
+
         this._checkIfSolved();
     }
 
@@ -83,6 +95,7 @@ class Board {
     }
 }
 
+//Components
 class BoardComponent {
     constructor(board) {
         this.board = board;
