@@ -1,0 +1,5 @@
+.tile-component {
+    display: inline-block;
+    position: absolute;
+    transition: 0.15s top ease-in-out, 0.15s left ease-in-out;
+}
