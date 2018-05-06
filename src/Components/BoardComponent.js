@@ -5,6 +5,7 @@ class BoardComponent {
 
     render(parentNode) {
         const boardDiv = document.createElement('div');
+        boardDiv.classList.add('board-component');
         
         for(const tile of this.board.tiles) {
             let text;
