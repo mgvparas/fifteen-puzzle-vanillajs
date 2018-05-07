@@ -20,8 +20,6 @@ class TileComponent {
         tileDiv.style.height = height + 'px';
         tileDiv.style.width = width + 'px';
         tileDiv.style.backgroundColor = backgroundColor;
-        tileDiv.style.left = (this.tile.columnIndex * 55) + "px";
-        tileDiv.style.top = (this.tile.rowIndex * 55) + "px";
         
         this._addEventListeners(tileDiv);
 

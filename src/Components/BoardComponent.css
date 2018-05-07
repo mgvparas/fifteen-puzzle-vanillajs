@@ -1,3 +1,4 @@
 .board-component {
-    /* border: 2px solid navy; */
+    padding: 2px;
+    border: 2px solid navy;
 }

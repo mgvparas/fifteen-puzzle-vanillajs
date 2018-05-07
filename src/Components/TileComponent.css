@@ -1,5 +1,11 @@
 .tile-component {
+    margin: 1px;
+    color: white;
+    cursor: pointer;
+	font: bold 36px Arial;
+	text-align: center;
+	text-shadow: -1px -1px 0 rgba(0,0,0, 0.5);
     display: inline-block;
-    position: absolute;
+    position: relative;
     transition: 0.15s top ease-in-out, 0.15s left ease-in-out;
 }
