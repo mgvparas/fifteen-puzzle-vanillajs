@@ -1,5 +1,6 @@
 class FifteenPuzzleApp {
     constructor() {
+        //default configurations
         this.boardComponentConfiguration = {
             tileHeight: 50,
             tileWidth: 50
@@ -8,6 +9,7 @@ class FifteenPuzzleApp {
             rowCount: 5,
             columnCount: 5
         };
+        
         this.boards = [];
     }
 
@@ -16,7 +18,8 @@ class FifteenPuzzleApp {
         appDiv.classList.add('app');
         
         const configFormComponent = new ConfigurationFormComponent(
-            (e) => this._handleFormChange(e),
+            (e) => this._handleTileConfigFormChange(e),
+            (e) => this._handleBoardConfigFormChange(e),
             () => this._handleGeneratePuzzleClick(appDiv)
         );
         configFormComponent.render(appDiv);
@@ -30,17 +33,23 @@ class FifteenPuzzleApp {
         parentNode.appendChild(appDiv);
     }
 
-    _renderBoards(appDiv) {
+    _renderBoards(appDiv) {;
         for(const board of this.boards) {
             const boardComponent = new BoardComponent(board, this.boardComponentConfiguration);
             boardComponent.render(appDiv);
         }
     }
 
-    _handleFormChange(e) {
+    _handleTileConfigFormChange(e) {
         console.log(`${e.target.name} field changed. Value: ${e.target.value}`);
         
         this.boardComponentConfiguration[e.target.name] = +e.target.value;
+    }
+
+    _handleBoardConfigFormChange(e) {
+        console.log(`${e.target.name} field changed. Value: ${e.target.value}`);
+        
+        this.boardConfiguration[e.target.name] = +e.target.value;
     }
 
     _handleGeneratePuzzleClick(appDiv) {
