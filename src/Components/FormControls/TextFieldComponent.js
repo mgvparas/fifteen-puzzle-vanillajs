@@ -19,6 +19,7 @@ class TextFieldComponent {
         input.setAttribute('type', 'number');
 
         textFieldDiv.appendChild(label);
+        textFieldDiv.appendChild(document.createElement('br'));
         textFieldDiv.appendChild(input);
         
         this._addEventListeners(input);

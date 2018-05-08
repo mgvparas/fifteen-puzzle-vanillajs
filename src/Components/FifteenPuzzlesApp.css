@@ -1,3 +1,7 @@
+.app {
+    padding: 5px;
+}
+
 .puzzles-container {
     /* container */
     display: flex;

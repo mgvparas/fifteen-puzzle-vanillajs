@@ -15,7 +15,8 @@ class ConfigurationFormComponent {
         const boardConfigFormComponent = new BoardConfigurationFormComponent(this._onBoardConfigFormChange);
         boardConfigFormComponent.render(configFormDiv);
 
-        const button = document.createElement('button');
+        const button = document.createElement('div');
+        button.classList.add('generate-puzzle-button');
         button.appendChild(document.createTextNode('Generate Puzzle'));
         configFormDiv.appendChild(button);
 
