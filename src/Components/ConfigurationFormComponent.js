@@ -1,4 +1,8 @@
 class ConfigurationFormComponent {
+    constructor(onGeneratePuzzleClick) {
+        this._onGeneratePuzzleClick = onGeneratePuzzleClick;
+    }
+
     render(parentNode) {
         const configFormDiv = document.createElement('div');
         configFormDiv.classList.add('configuration-form-component');
@@ -14,6 +18,12 @@ class ConfigurationFormComponent {
         button.appendChild(document.createTextNode('Generate Puzzle'))
         configFormDiv.appendChild(button);
 
+        this._addEventListeners(button);
+
         parentNode.appendChild(configFormDiv);
+    }
+
+    _addEventListeners(button) {
+        button.addEventListener('click', this._onGeneratePuzzleClick);
     }
 }
