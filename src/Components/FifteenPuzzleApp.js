@@ -4,6 +4,10 @@ class FifteenPuzzleApp {
             tileHeight: 50,
             tileWidth: 50
         };
+        this.boardConfiguration = {
+            rowCount: 5,
+            columnCount: 5
+        };
         this.boards = [];
     }
 
@@ -40,7 +44,7 @@ class FifteenPuzzleApp {
     }
 
     _handleGeneratePuzzleClick(appDiv) {
-        const board = new Board();
+        const board = new Board(this.boardConfiguration);
         board.shuffle();
 
         console.log('New puzzle generated.');

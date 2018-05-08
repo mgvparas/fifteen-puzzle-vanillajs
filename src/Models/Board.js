@@ -1,5 +1,7 @@
 class Board {
-    constructor(rowCount = 4, columnCount = 4) {
+    constructor(params) {
+        const { rowCount = 4, columnCount = 4 } = params;
+
         this.rowCount = rowCount;
         this.columnCount = columnCount;
         this.tileCount = rowCount * columnCount;
