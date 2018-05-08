@@ -1,5 +1,6 @@
 class FifteenPuzzleApp {
     constructor() {
+        this.configuration = {};
         this.boards = [];
     }
 
@@ -8,6 +9,7 @@ class FifteenPuzzleApp {
         appDiv.classList.add('app');
         
         const configFormComponent = new ConfigurationFormComponent(
+            (e) => this._handleFormChange(e),
             () => this._handleGeneratePuzzleClick(appDiv)
         );
         configFormComponent.render(appDiv);
@@ -26,6 +28,11 @@ class FifteenPuzzleApp {
             const boardComponent = new BoardComponent(board);
             boardComponent.render(appDiv);
         }
+    }
+
+    _handleFormChange(e) {
+        console.log('change event fired');
+        console.log(e);
     }
 
     _handleGeneratePuzzleClick(appDiv) {

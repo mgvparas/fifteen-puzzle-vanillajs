@@ -1,5 +1,6 @@
 class ConfigurationFormComponent {
-    constructor(onGeneratePuzzleClick) {
+    constructor(onFormChange, onGeneratePuzzleClick) {
+        this._onTextFieldChange = onFormChange;
         this._onGeneratePuzzleClick = onGeneratePuzzleClick;
     }
 
@@ -11,19 +12,19 @@ class ConfigurationFormComponent {
         tileConfigFormHeader.appendChild(document.createTextNode('Tile Config'));
         configFormDiv.appendChild(tileConfigFormHeader);
 
-        const textFieldComponent = new TextFieldComponent();
+        const textFieldComponent = new TextFieldComponent(this._onTextFieldChange);
         textFieldComponent.render(configFormDiv);
 
         const button = document.createElement('button');
-        button.appendChild(document.createTextNode('Generate Puzzle'))
+        button.appendChild(document.createTextNode('Generate Puzzle'));
         configFormDiv.appendChild(button);
 
-        this._addEventListeners(button);
+        this._addButtonEventListeners(button);
 
         parentNode.appendChild(configFormDiv);
     }
 
-    _addEventListeners(button) {
+    _addButtonEventListeners(button) {
         button.addEventListener('click', this._onGeneratePuzzleClick);
     }
 }
