@@ -13,7 +13,8 @@ class TextFieldComponent {
 
         const tileHeightInput = document.createElement('input');
         tileHeightInput.setAttribute('id', 'tile-height');
-        tileHeightInput.setAttribute('type', 'text');
+        tileHeightInput.setAttribute('name', 'tileHeight');
+        tileHeightInput.setAttribute('type', 'number');
         
         this._addEventListeners(tileHeightInput);
 

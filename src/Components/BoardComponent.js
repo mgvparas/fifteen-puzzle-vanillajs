@@ -1,8 +1,8 @@
 class BoardComponent {
-    constructor(board) {
+    constructor(board, configuration) {
         this.board = board;
         this.configuration = {
-            tileHeight: 50,
+            tileHeight: configuration.tileHeight,
             tileWidth: 50,
             tileDefaultColor: 'blue'
         }
