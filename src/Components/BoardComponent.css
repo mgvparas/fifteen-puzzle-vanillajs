@@ -1,4 +1,7 @@
 .board-component {
     padding: 2px;
     border: 2px solid navy;
+
+    /* item */
+    flex: 1 1 auto;
 }

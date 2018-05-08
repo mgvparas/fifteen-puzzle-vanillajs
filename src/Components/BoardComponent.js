@@ -12,8 +12,13 @@ class BoardComponent {
 
         this._renderTileComponents(boardDiv);
 
-        boardDiv.style.height = ((tileHeight * this.board.rowCount) + (this.board.rowCount * 2)) + 'px';
-        boardDiv.style.width = ((tileWidth * this.board.columnCount) + (this.board.columnCount * 2)) + 'px';
+        const computedHeight = ((tileHeight * this.board.rowCount) + (this.board.rowCount * 2)) + 'px';
+        const computedWidth = ((tileWidth * this.board.columnCount) + (this.board.columnCount * 2)) + 'px';
+        
+        boardDiv.style.height = computedHeight;
+        boardDiv.style.width = computedWidth;
+        boardDiv.style.maxHeight = computedHeight;
+        boardDiv.style.maxWidth = computedWidth;
 
         parentNode.appendChild(boardDiv);
     }
