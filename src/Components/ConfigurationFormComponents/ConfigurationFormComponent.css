@@ -1,7 +1,12 @@
 .config-form-component {
+    max-width: 200px;
+
+    /* item */
+    flex: 1 1 auto;
+
     /* container */
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
 }
