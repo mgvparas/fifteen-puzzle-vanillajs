@@ -19,11 +19,12 @@ class BoardComponent {
     }
 
     _renderTileComponents(boardDiv) {
-        const { tileHeight, tileWidth, tileColor } = this.configuration;
+        const { tileHeight, tileWidth } = this.configuration;
 
         boardDiv.innerHTML = '';
 
-        let styles = { height: tileHeight, width: tileWidth, backgroundColor: tileColor };
+        const defaultTileColor = 'blue';
+        let styles = { height: tileHeight, width: tileWidth, backgroundColor: defaultTileColor };
         
         for(const tile of this.board.tiles) {
             let text;
@@ -32,7 +33,7 @@ class BoardComponent {
                 styles.backgroundColor = 'white';
                 text = '\xa0';
             } else {
-                styles.backgroundColor = tileColor;
+                styles.backgroundColor = defaultTileColor;
                 text = tile.number;
             }
 

@@ -12,8 +12,19 @@ class ConfigurationFormComponent {
         tileConfigFormHeader.appendChild(document.createTextNode('Tile Config'));
         configFormDiv.appendChild(tileConfigFormHeader);
 
-        const textFieldComponent = new TextFieldComponent(this._onTextFieldChange);
-        textFieldComponent.render(configFormDiv);
+        const tileHeightComponent = new TextFieldComponent({
+            name: 'tileHeight', 
+            label: 'Height',
+            onChange: this._onTextFieldChange
+        });
+        tileHeightComponent.render(configFormDiv);
+
+        const tileWidthComponent = new TextFieldComponent({
+            name: 'tileWidth', 
+            label: 'Width',
+            onChange: this._onTextFieldChange
+        });
+        tileWidthComponent.render(configFormDiv);
 
         const button = document.createElement('button');
         button.appendChild(document.createTextNode('Generate Puzzle'));

@@ -1,5 +1,9 @@
 class TextFieldComponent {
-    constructor(onChange) {
+    constructor(params) {
+        const { name, label, onChange } = params;
+
+        this._name = name;
+        this._label = label;
         this._onChange = onChange;
     }
 
@@ -7,19 +11,17 @@ class TextFieldComponent {
         const textFieldDiv = document.createElement('div');
         textFieldDiv.classList.add('text-field');
 
-        const tileHeightLabel = document.createElement('label');
-        tileHeightLabel.setAttribute('for', 'tile-height');
-        tileHeightLabel.appendChild(document.createTextNode('Height: '));
+        const label = document.createElement('label');
+        label.appendChild(document.createTextNode(`${this._label}: `));
 
-        const tileHeightInput = document.createElement('input');
-        tileHeightInput.setAttribute('id', 'tile-height');
-        tileHeightInput.setAttribute('name', 'tileHeight');
-        tileHeightInput.setAttribute('type', 'number');
+        const input = document.createElement('input');
+        input.setAttribute('name', this._name);
+        input.setAttribute('type', 'number');
+
+        textFieldDiv.appendChild(label);
+        textFieldDiv.appendChild(input);
         
-        this._addEventListeners(tileHeightInput);
-
-        textFieldDiv.appendChild(tileHeightLabel);
-        textFieldDiv.appendChild(tileHeightInput);
+        this._addEventListeners(input);
 
         parentNode.appendChild(textFieldDiv);
     }
