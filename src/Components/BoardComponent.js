@@ -1,13 +1,34 @@
 class BoardComponent {
     constructor(board) {
         this.board = board;
+        this.configuration = {
+            tileHeight: 50,
+            tileWidth: 50,
+            tileDefaultColor: 'blue'
+        }
     }
 
     render(parentNode) {
+        const { tileHeight, tileWidth } = this.configuration;
+
         const boardDiv = document.createElement('div');
         boardDiv.classList.add('board-component');
+
+        this._renderTileComponents(boardDiv);
+
+        boardDiv.style.height = ((tileHeight * this.board.rowCount) + (this.board.rowCount * 2)) + 'px';
+        boardDiv.style.width = ((tileWidth * this.board.columnCount) + (this.board.columnCount * 2)) + 'px';
+
+        parentNode.appendChild(boardDiv);
+    }
+
+    _renderTileComponents(boardDiv) {
+        const { tileHeight, tileWidth, tileDefaultColor } = this.configuration;
+
+        boardDiv.innerHTML = '';
+
+        let styles = { height: tileHeight, width: tileWidth, backgroundColor: tileDefaultColor };
         
-        let styles = { height: 50, width: 50, backgroundColor: 'blue' };
         for(const tile of this.board.tiles) {
             let text;
 
@@ -15,7 +36,7 @@ class BoardComponent {
                 styles.backgroundColor = 'white';
                 text = '\xa0';
             } else {
-                styles.backgroundColor = 'blue';
+                styles.backgroundColor = tileDefaultColor;
                 text = tile.number;
             }
 
@@ -23,25 +44,19 @@ class BoardComponent {
                 tile,
                 text,
                 styles,
-                () => this._handleTileClick(tile, parentNode)
+                () => this._handleTileClick(tile, boardDiv)
             );
 
             tileComponent.render(boardDiv);
         }
-
-        boardDiv.style.height = ((styles.height * this.board.rowCount) + (this.board.rowCount * 2)) + 'px';
-        boardDiv.style.width = ((styles.width * this.board.columnCount) + (this.board.columnCount * 2)) + 'px';
-
-        parentNode.appendChild(boardDiv);
     }
     
-    _handleTileClick(tile, parentNode) {
+    _handleTileClick(tile, boardDiv) {
         console.log(`Tile ${tile.number} clicked!`);
     
         this.board.swapWithEmpty(tile)
     
-        parentNode.innerHTML = '';
-        this.render(parentNode);
+        this._renderTileComponents(boardDiv);
     
         if (this.board.isSolved) {
             alert('Puzzle Solved! :)');
