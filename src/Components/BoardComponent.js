@@ -12,6 +12,7 @@ class BoardComponent {
 
         this._renderTileComponents(boardDiv);
 
+        //Board width and height are computed based on the tile size
         const computedHeight = ((tileHeight * this.board.rowCount) + (this.board.rowCount * 2)) + 'px';
         const computedWidth = ((tileWidth * this.board.columnCount) + (this.board.columnCount * 2)) + 'px';
         

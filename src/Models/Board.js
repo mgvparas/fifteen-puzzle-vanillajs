@@ -9,6 +9,9 @@ class Board {
         this.tiles = this._createTiles(rowCount, columnCount);
     }
 
+    /**
+     * Look for adjacent empty tile of clicked tile, then swap if any
+     */
     swapWithEmpty(tile) {
         const adjacentTiles = this._getAdjacentTiles(tile);
         const adjacentEmptyTile = adjacentTiles.find(x => x.number === this.tileCount);
@@ -21,6 +24,7 @@ class Board {
         adjacentEmptyTile.number = tile.number;
         tile.number = this.tileCount;
 
+        console.log('New state of tiles: ');
         console.log(this.tiles);
         
         this._checkIfSolved();

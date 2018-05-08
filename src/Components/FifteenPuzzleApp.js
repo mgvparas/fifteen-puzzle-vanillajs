@@ -1,6 +1,7 @@
 class FifteenPuzzleApp {
     constructor() {
-        //default configurations
+        //default configurations; gets updated on each field change
+        //property names should be same as each element's name attribute
         this.boardComponentConfiguration = {
             tileHeight: 50,
             tileWidth: 50
