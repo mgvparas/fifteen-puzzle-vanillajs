@@ -7,20 +7,20 @@ class BoardConfigurationFormComponent {
         const formDiv = document.createElement('div');
         formDiv.classList.add('board-config-form-component');
         
-        const header = document.createElement('h3');
-        header.appendChild(document.createTextNode('Board Config'));
+        const header = document.createElement('h4');
+        header.appendChild(document.createTextNode('How do you want your board set up?'));
         formDiv.appendChild(header);
 
         const rowCountComponent = new TextFieldComponent({
             name: 'rowCount', 
-            label: 'Row Count',
+            label: 'No. of rows',
             onChange: this._onTextFieldChange
         });
         rowCountComponent.render(formDiv);
 
         const columnCountComponent = new TextFieldComponent({
             name: 'columnCount', 
-            label: 'Column Count',
+            label: 'No. of columns',
             onChange: this._onTextFieldChange
         });
         columnCountComponent.render(formDiv);

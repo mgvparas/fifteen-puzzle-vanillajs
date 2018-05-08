@@ -1,5 +1,6 @@
 .config-form-component {
     max-width: 200px;
+    min-width: 200px;
     margin-right: 5px;
 
     /* item */

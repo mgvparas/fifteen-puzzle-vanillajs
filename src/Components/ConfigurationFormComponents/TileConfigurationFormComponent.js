@@ -7,8 +7,8 @@ class TileConfigurationFormComponent {
         const formDiv = document.createElement('div');
         formDiv.classList.add('tile-config-form-component');
         
-        const tileConfigFormHeader = document.createElement('h3');
-        tileConfigFormHeader.appendChild(document.createTextNode('Tile Config'));
+        const tileConfigFormHeader = document.createElement('h4');
+        tileConfigFormHeader.appendChild(document.createTextNode('How large do you want your tiles to be?'));
         formDiv.appendChild(tileConfigFormHeader);
 
         const tileHeightComponent = new TextFieldComponent({

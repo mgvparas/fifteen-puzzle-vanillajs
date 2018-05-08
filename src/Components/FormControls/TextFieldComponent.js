@@ -11,15 +11,18 @@ class TextFieldComponent {
         const textFieldDiv = document.createElement('div');
         textFieldDiv.classList.add('text-field');
 
+        const labelContainer = document.createElement('div');
+        labelContainer.classList.add('label-container');
+        
         const label = document.createElement('label');
-        label.appendChild(document.createTextNode(`${this._label}: `));
+        label.appendChild(document.createTextNode(`${this._label}`));
 
         const input = document.createElement('input');
         input.setAttribute('name', this._name);
         input.setAttribute('type', 'number');
 
-        textFieldDiv.appendChild(label);
-        textFieldDiv.appendChild(document.createElement('br'));
+        labelContainer.appendChild(label);
+        textFieldDiv.appendChild(labelContainer);
         textFieldDiv.appendChild(input);
         
         this._addEventListeners(input);
