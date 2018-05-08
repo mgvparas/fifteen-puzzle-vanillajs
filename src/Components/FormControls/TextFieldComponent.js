@@ -1,9 +1,10 @@
 class TextFieldComponent {
     constructor(params) {
-        const { name, label, onChange } = params;
+        const { name, label, defaultValue, onChange } = params;
 
         this._name = name;
         this._label = label;
+        this._defaultValue = defaultValue;
         this._onChange = onChange;
     }
 
@@ -20,6 +21,7 @@ class TextFieldComponent {
         const input = document.createElement('input');
         input.setAttribute('name', this._name);
         input.setAttribute('type', 'number');
+        input.setAttribute('value', this._defaultValue);
 
         labelContainer.appendChild(label);
         textFieldDiv.appendChild(labelContainer);

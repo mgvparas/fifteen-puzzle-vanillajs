@@ -29,7 +29,7 @@ class BoardComponent {
 
         boardDiv.innerHTML = '';
 
-        const defaultTileColor = 'blue';
+        const defaultTileColor = '#0033ff';
         let styles = { height: tileHeight, width: tileWidth, backgroundColor: defaultTileColor };
         
         for(const tile of this.board.tiles) {

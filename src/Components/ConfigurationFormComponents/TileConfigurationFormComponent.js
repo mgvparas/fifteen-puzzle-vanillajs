@@ -14,6 +14,7 @@ class TileConfigurationFormComponent {
         const tileHeightComponent = new TextFieldComponent({
             name: 'tileHeight', 
             label: 'Height',
+            defaultValue: 50,
             onChange: this._onTextFieldChange
         });
         tileHeightComponent.render(formDiv);
@@ -21,6 +22,7 @@ class TileConfigurationFormComponent {
         const tileWidthComponent = new TextFieldComponent({
             name: 'tileWidth', 
             label: 'Width',
+            defaultValue: 50,
             onChange: this._onTextFieldChange
         });
         tileWidthComponent.render(formDiv);

@@ -14,6 +14,7 @@ class BoardConfigurationFormComponent {
         const rowCountComponent = new TextFieldComponent({
             name: 'rowCount', 
             label: 'No. of rows',
+            defaultValue: 4,
             onChange: this._onTextFieldChange
         });
         rowCountComponent.render(formDiv);
@@ -21,6 +22,7 @@ class BoardConfigurationFormComponent {
         const columnCountComponent = new TextFieldComponent({
             name: 'columnCount', 
             label: 'No. of columns',
+            defaultValue: 4,
             onChange: this._onTextFieldChange
         });
         columnCountComponent.render(formDiv);
