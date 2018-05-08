@@ -33,9 +33,10 @@ class FifteenPuzzleApp {
         parentNode.appendChild(appDiv);
     }
 
-    _renderBoards(appDiv) {;
-        for(const board of this.boards) {
-            const boardComponent = new BoardComponent(board, this.boardComponentConfiguration);
+    _renderBoards(appDiv) {
+        if (this.boards.length > 0) {
+            const latestBoard = this.boards[this.boards.length - 1];
+            const boardComponent = new BoardComponent(latestBoard, this.boardComponentConfiguration);
             boardComponent.render(appDiv);
         }
     }
