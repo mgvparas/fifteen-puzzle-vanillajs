@@ -7,7 +7,7 @@ class ConfigurationFormComponent {
 
     render(parentNode) {
         const configFormDiv = document.createElement('div');
-        configFormDiv.classList.add('configuration-form-component');
+        configFormDiv.classList.add('config-form-component');
 
         const tileConfigFormComponent = new TileConfigurationFormComponent(this._onTileConfigFormChange);
         tileConfigFormComponent.render(configFormDiv);

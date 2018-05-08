@@ -28,7 +28,8 @@ class BoardComponent {
         
         for(const tile of this.board.tiles) {
             let text;
-
+            
+            // Render empty white tile for final tile
             if (tile.number === this.board.tileCount) {
                 styles.backgroundColor = 'white';
                 text = '\xa0';

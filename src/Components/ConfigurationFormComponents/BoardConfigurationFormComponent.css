@@ -1,0 +1,6 @@
+.board-config-form-component {
+    max-width: 300px;
+
+    /* item */
+    flex: 1 1 auto;
+}

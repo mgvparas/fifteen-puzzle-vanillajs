@@ -28,7 +28,7 @@ class Board {
     }
 
     /**
-     * Get empty tile, then swap with any of the adjacent tiles, then repeat for x number of times
+     * Get empty tile, then swap with any of its adjacent tiles, then repeat for x number of times
      */
     shuffle() {
         for(let x = 0; x < this.tileCount * 2; x++) {
