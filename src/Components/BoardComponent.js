@@ -1,11 +1,7 @@
 class BoardComponent {
     constructor(board, configuration) {
         this.board = board;
-        this.configuration = {
-            tileHeight: configuration.tileHeight,
-            tileWidth: 50,
-            tileDefaultColor: 'blue'
-        }
+        this.configuration = configuration;
     }
 
     render(parentNode) {
@@ -23,11 +19,11 @@ class BoardComponent {
     }
 
     _renderTileComponents(boardDiv) {
-        const { tileHeight, tileWidth, tileDefaultColor } = this.configuration;
+        const { tileHeight, tileWidth, tileColor } = this.configuration;
 
         boardDiv.innerHTML = '';
 
-        let styles = { height: tileHeight, width: tileWidth, backgroundColor: tileDefaultColor };
+        let styles = { height: tileHeight, width: tileWidth, backgroundColor: tileColor };
         
         for(const tile of this.board.tiles) {
             let text;
@@ -36,7 +32,7 @@ class BoardComponent {
                 styles.backgroundColor = 'white';
                 text = '\xa0';
             } else {
-                styles.backgroundColor = tileDefaultColor;
+                styles.backgroundColor = tileColor;
                 text = tile.number;
             }
 

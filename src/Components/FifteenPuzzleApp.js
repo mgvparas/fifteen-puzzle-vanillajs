@@ -1,7 +1,9 @@
 class FifteenPuzzleApp {
     constructor() {
         this.boardComponentConfiguration = {
-            tileHeight: 50
+            tileHeight: 50,
+            tileWidth: 50,
+            tileColor: 'blue'
         };
         this.boards = [];
     }
