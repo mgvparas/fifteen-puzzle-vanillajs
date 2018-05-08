@@ -6,8 +6,8 @@ class FifteenPuzzleApp {
             tileWidth: 50
         };
         this.boardConfiguration = {
-            rowCount: 5,
-            columnCount: 5
+            rowCount: 4,
+            columnCount: 4
         };
         
         this.boards = [];
@@ -28,15 +28,15 @@ class FifteenPuzzleApp {
         boardsHeader.appendChild(document.createTextNode('Puzzles'));
         appDiv.appendChild(boardsHeader);
 
-        this._renderBoards(appDiv);
-
         parentNode.appendChild(appDiv);
     }
 
-    _renderBoards(appDiv) {
+    _renderBoard(appDiv) {
         if (this.boards.length > 0) {
             const latestBoard = this.boards[this.boards.length - 1];
-            const boardComponent = new BoardComponent(latestBoard, this.boardComponentConfiguration);
+            const boardComponent = new BoardComponent(
+                latestBoard, 
+                Object.assign({}, this.boardComponentConfiguration));
             boardComponent.render(appDiv);
         }
     }
@@ -54,12 +54,12 @@ class FifteenPuzzleApp {
     }
 
     _handleGeneratePuzzleClick(appDiv) {
-        const board = new Board(this.boardConfiguration);
+        const board = new Board(Object.assign({}, this.boardConfiguration));
         board.shuffle();
 
         console.log('New puzzle generated.');
 
         this.boards.push(board);
-        this._renderBoards(appDiv);
+        this._renderBoard(appDiv);
     }
 }
