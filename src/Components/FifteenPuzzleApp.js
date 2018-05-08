@@ -27,12 +27,7 @@ class FifteenPuzzleApp {
         );
         configFormComponent.render(appDiv);
 
-        const puzzlesContainerHeader = document.createElement('h3');
-        puzzlesContainerHeader.appendChild(document.createTextNode('Puzzles'));
-        appDiv.appendChild(puzzlesContainerHeader);
-
         appDiv.appendChild(puzzlesContainerDiv);
-
         parentNode.appendChild(appDiv);
     }
 

@@ -1,5 +1,6 @@
 .config-form-component {
     max-width: 200px;
+    margin-right: 5px;
 
     /* item */
     flex: 1 1 auto;
@@ -7,8 +8,8 @@
     /* container */
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .generate-puzzle-button {
